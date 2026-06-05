@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { Link } from "react-router";
 export function Homepage() {
     useEffect(() => {
       import("./laptop-scene.js");
@@ -8,12 +9,12 @@ export function Homepage() {
         <>
         <header className="site-header">
       <div className="container site-header-inner">
-        <a className="site-brand" href="#home" aria-label="Go to home">
+        <Link className="site-brand" to="/" aria-label="Go to home">
           Muntasir<span className="brand-dot">.</span>
-        </a>
+        </Link>
 
         <nav className="site-nav" aria-label="Primary">
-          <a href="about.html">About</a>
+          <Link to="/about">About</Link>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="contact.html">Contact</a>
