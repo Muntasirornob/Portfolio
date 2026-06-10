@@ -57,143 +57,92 @@ export function Homepage() {
 
           <div className="project-list">
             <article className="project-card">
-              <div className="project-media project-media--blog" aria-hidden="true">
-                <div className="browser-shell">
-                  <div className="browser-bar">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div className="browser-content">
-                    <div className="browser-grid">
-                      <div className="browser-tile browser-tile--wide"></div>
-                      <div className="browser-tile"></div>
-                      <div className="browser-tile"></div>
-                      <div className="browser-tile"></div>
-                      <div className="browser-tile"></div>
-                      <div className="browser-tile browser-tile--wide"></div>
-                    </div>
-                  </div>
+              <div className="project-media project-media--image">
+                <div className="project-image-frame">
+                  <img
+                    className="project-image"
+                    src="/etl.png"
+                    alt="AWS data pipeline project preview"
+                  />
                 </div>
               </div>
 
               <div className="project-content">
-                <p className="project-kicker">Project 01</p>
-                <h3>Blog App</h3>
-                <p>
-                  A clean blog application with a modern editorial layout,
-                  structured content sections, and a responsive interface.
-                </p>
-                <div className="project-tags" aria-label="Technologies used">
-                  <span>React JS</span>
-                  <span>Firebase</span>
-                  <span>CSS</span>
+                  <p className="project-kicker">Project 01</p>
+                  <h3>AWS Data Pipeline System</h3>
+                  <p>
+                  End-to-end ETL pipeline on AWS for data ingestion, transformation,
+                  and scalable cloud storage using modular Python workflows.
+                  </p>
+                 <div className="project-tags">
+                  <span>AWS</span>
+                  <span>ETL</span>
+                  <span>Python</span>
+                  <span>Data Engineering</span>
                 </div>
                 <div className="project-actions">
-                  <a className="button" href="https://github.com/Muntasirornob" target="_blank" rel="noreferrer">GitHub</a>
+                  <a className="button" href="https://github.com/Muntasirornob/data-pipeline-aws" target="_blank" rel="noreferrer">GitHub</a>
                   <a className="button button--ghost" href="#">Live Demo</a>
                 </div>
               </div>
             </article>
 
             <article className="project-card project-card--reverse">
-              <div className="project-media project-media--dashboard" aria-hidden="true">
-                <div className="browser-shell browser-shell--soft">
-                  <div className="browser-bar">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div className="browser-content browser-content--dashboard">
-                    <div className="dashboard-sidebar"></div>
-                    <div className="dashboard-main">
-                      <div className="dashboard-hero"></div>
-                      <div className="dashboard-row">
-                        <div></div><div></div><div></div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="project-media project-media--image">
+                <div className="project-image-frame">
+                  <img
+                    className="project-image"
+                    src="/SCED.png"
+                    alt="Security-constrained economic dispatch tool preview"
+                  />
                 </div>
               </div>
 
               <div className="project-content">
                 <p className="project-kicker">Project 02</p>
-                <h3>Analytics Dashboard</h3>
+                <h3>Security-Constrained Economic Dispatch Tool</h3>
                 <p>
-                  A responsive dashboard UI with card-based metrics, intuitive
-                  layout blocks, and a polished enterprise feel.
+                  Python-based optimization and forecasting system for power grids using
+                  machine learning and Gurobi-based constrained optimization.
                 </p>
-                <div className="project-tags" aria-label="Technologies used">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>JavaScript</span>
+                 <div className="project-tags">
+                  <span>Python</span>
+                  <span>Machine Learning</span>
+                  <span>Gurobi</span>
+                  <span>Time-Series</span>
                 </div>
                 <div className="project-actions">
-                  <a className="button" href="https://github.com/Muntasirornob" target="_blank" rel="noreferrer">GitHub</a>
+                  <a className="button" href="https://github.com/Nabil-Ahmed-Sheikh/Power-system-forecasting-tool" target="_blank" rel="noreferrer">GitHub</a>
                   <a className="button button--ghost" href="#">Live Demo</a>
                 </div>
               </div>
             </article>
 
             <article className="project-card">
-              <div className="project-media project-media--ai" aria-hidden="true">
-                <div className="browser-shell browser-shell--soft">
-                  <div className="browser-bar">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div className="browser-content browser-content--ai">
-                    <div className="ai-orb ai-orb--one"></div>
-                    <div className="ai-panel"></div>
-                    <div className="ai-card ai-card--left"></div>
-                    <div className="ai-card ai-card--right"></div>
-                  </div>
+              <div className="project-media project-media--image">
+                <div className="project-image-frame">
+                  <img
+                    className="project-image"
+                    src="/interview-prep.png"
+                    alt="AI interview prep project preview"
+                  />
                 </div>
               </div>
 
               <div className="project-content">
                 <p className="project-kicker">Project 03</p>
-                <h3>Agent Workflow Studio</h3>
+                <h3>AI Powered Interview Prep</h3>
                 <p>
                   A concept interface for designing agentic automation flows,
                   task nodes, and workflow handoffs.
                 </p>
                 <div className="project-tags" aria-label="Technologies used">
                   <span>Next JS</span>
-                  <span>AI</span>
-                  <span>Tailwind</span>
+                  <span>Fast API</span>
+                  <span>LangChain</span>
                 </div>
                 <div className="project-actions">
-                  <a className="button" href="https://github.com/Muntasirornob" target="_blank" rel="noreferrer">GitHub</a>
-                  <a className="button button--ghost" href="#">Live Demo</a>
-                </div>
-              </div>
-            </article>
-
-            <article className="project-card project-card--reverse">
-              <div className="project-media project-media--cloud" aria-hidden="true">
-                <div className="browser-shell browser-shell--soft">
-                  <div className="browser-bar">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div className="browser-content browser-content--cloud">
-                    <div className="cloud-chart cloud-chart--big"></div>
-                    <div className="cloud-chart cloud-chart--small"></div>
-                    <div className="cloud-card"></div>
-                    <div className="cloud-card cloud-card--accent"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="project-content">
-                <p className="project-kicker">Project 04</p>
-                <h3>Cloud Operations Panel</h3>
-                <p>
-                  A lightweight cloud management interface with monitoring,
-                  status indicators, and an accessible layout.
-                </p>
-                <div className="project-tags" aria-label="Technologies used">
-                  <span>React</span>
-                  <span>Cloud</span>
-                  <span>UI Design</span>
-                </div>
-                <div className="project-actions">
-                  <a className="button" href="https://github.com/Muntasirornob" target="_blank" rel="noreferrer">GitHub</a>
+                  <a className="button" href="https://github.com/Muntasirornob/ai-powered-interview-prep" target="_blank" rel="noreferrer">GitHub</a>
                   <a className="button button--ghost" href="#">Live Demo</a>
                 </div>
               </div>
