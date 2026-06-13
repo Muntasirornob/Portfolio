@@ -1,28 +1,17 @@
 
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Header } from '../components/Header.jsx';
+import '../styles/pages/Homepage.css'
 export function Homepage() {
     useEffect(() => {
       import("./laptop-scene.js");
     }, []);
     return (
         <>
-        <header className="site-header">
-      <div className="container site-header-inner">
-        <Link className="site-brand" to="/" aria-label="Go to home">
-          Muntasir<span className="brand-dot">.</span>
-        </Link>
-
-        <nav className="site-nav" aria-label="Primary">
-          <Link to="/about">About</Link>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <a className="button button--primary site-header-cta" href="contact.html">Hire me</a>
-      </div>
-        </header>
+        <Header
+          brandText="Muntasir"
+          activePage="home"
+        />
 
          <main>
       <section className="hero" id="home">

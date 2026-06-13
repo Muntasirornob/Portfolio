@@ -1,28 +1,14 @@
-import { Link } from 'react-router'
+import { Header } from '../components/Header.jsx'
+import '../styles/components/ContactInfo.css'
+import '../styles/pages/About.css'
 
 export function About() {
   return (
     <>
-      <header className="site-header">
-        <div className="container site-header-inner">
-          <Link className="site-brand" to="/" aria-label="Go to home">
-            Portfolio<span className="brand-dot">.</span>
-          </Link>
-
-          <nav className="site-nav" aria-label="Primary">
-            <Link to="/about" aria-current="page">
-              About
-            </Link>
-            <Link to="/#projects">Projects</Link>
-            <Link to="/#skills">Skills</Link>
-            <a href="contact.html">Contact</a>
-          </nav>
-
-          <a className="button button--primary site-header-cta" href="contact.html">
-            Hire me
-          </a>
-        </div>
-      </header>
+      <Header
+        brandText="Portfolio"
+        activePage="about"
+      />
 
       <main className="about-page">
         <section className="about-hero section">
