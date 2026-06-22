@@ -71,7 +71,7 @@ export function About() {
                   Graduate)
                 </li>
                 <li>
-                  <strong>Focus:</strong> Python, PHP, JavaScript, Cloud Computing
+                  <strong>Focus:</strong> Python, PHP, JavaScript, React, Node.js, Laravel, MySQL, MongoDB, AWS, Docker, Kubernetes
                 </li>
               </ul>
 
