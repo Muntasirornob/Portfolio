@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { Header } from '../components/Header.jsx'
 import '../styles/components/ContactInfo.css'
 import '../styles/pages/About.css'
 
 export function About() {
+  const [activeExperienceTab, setActiveExperienceTab] = useState('work')
+
   return (
     <>
       <Header
@@ -132,74 +135,125 @@ export function About() {
             <aside className="experience-intro">
               <h2 id="experience-title">Experience</h2>
               <p>Companies I&apos;ve had worked with</p>
+
+              <div className="experience-tabs" role="tablist" aria-label="Experience tabs">
+                <button
+                  type="button"
+                  className={`experience-tab ${activeExperienceTab === 'work' ? 'experience-tab--active' : ''}`}
+                  onClick={() => setActiveExperienceTab('work')}
+                  role="tab"
+                  aria-selected={activeExperienceTab === 'work'}
+                >
+                  Work
+                </button>
+                <button
+                  type="button"
+                  className={`experience-tab ${activeExperienceTab === 'education' ? 'experience-tab--active' : ''}`}
+                  onClick={() => setActiveExperienceTab('education')}
+                  role="tab"
+                  aria-selected={activeExperienceTab === 'education'}
+                >
+                  Education
+                </button>
+              </div>
             </aside>
 
             <div className="experience-content">
-              <article className="experience-entry">
-                <div className="experience-timeline-dot experience-timeline-dot--top"></div>
-                <div className="experience-head">
-                  <h3>🏢 SoftBD</h3>
-                  <span className="experience-badge">2022 - 2023</span>
-                </div>
+              {activeExperienceTab === 'work' ? (
+                <article className="experience-entry">
+                  <div className="experience-timeline-dot experience-timeline-dot--top"></div>
+                  <div className="experience-head">
+                    <h3>🏢 SoftBD</h3>
+                    <span className="experience-badge">2022 - 2023</span>
+                  </div>
 
-                <h4>Assistant Software Engineer</h4>
-                <p>
-                  Developed a scalable government job platform (NISE) using Laravel
-                  Lumen and MySQL, serving over 5M users nationwide. Built and
-                  maintained REST APIs with JWT and OpenAPI (Swagger), enabling secure
-                  integration across multiple systems. Automated manual identity
-                  verification, increasing operational efficiency by 60% and reducing
-                  errors significantly. Managed CI/CD workflows with GitLab, ArgoCD,
-                  and Kubernetes, reducing deployment time by 40%. Collaborated with a
-                  React frontend team to deliver seamless integration, ensuring feature
-                  parity across platforms. Collaborated with a React frontend team to
-                  deliver seamless integration, ensuring feature parity across
-                  platforms.
-                </p>
+                  <h4>Assistant Software Engineer</h4>
+                  <p>
+                    Developed a scalable government job platform (NISE) using Laravel
+                    Lumen and MySQL, serving over 5M users nationwide. Built and
+                    maintained REST APIs with JWT and OpenAPI (Swagger), enabling secure
+                    integration across multiple systems. Automated manual identity
+                    verification, increasing operational efficiency by 60% and reducing
+                    errors significantly. Managed CI/CD workflows with GitLab, ArgoCD,
+                    and Kubernetes, reducing deployment time by 40%. Collaborated with a
+                    React frontend team to deliver seamless integration, ensuring
+                    feature parity across platforms.
+                  </p>
 
-                <h5 className="experience-subtitle">Certifications</h5>
-                <div className="cert-grid">
-                  <article className="cert-card">
-                    <div className="cert-topline">
-                      <span className="cert-mark">✹</span>
-                      <span className="cert-chip">AWS-CCP</span>
-                    </div>
-                    <h6>AWS Certified Cloud Practitioner</h6>
-                    <p>AWS • 2026</p>
-                  </article>
+                  <div className="experience-head">
+                    <h3>🏢 App Atlantis Corporation</h3>
+                    <span className="experience-badge">2022</span>
+                  </div>
 
-                  <article className="cert-card">
-                    <div className="cert-topline">
-                      <span className="cert-mark">✹</span>
-                      <span className="cert-chip">AZ-900</span>
-                    </div>
-                    <h6>Microsoft Azure Fundamentals</h6>
-                    <p>Azure • 2026</p>
-                  </article>
+                  <h4> Software Developer</h4>
+                  <p>
+                    Built backend services and business features for an agricultural e-commerce platform with more than 10,000 active users. Integrated payment gateways, optimized database operations, and supported production deployments and troubleshooting.
+                  </p>
 
-                  <article className="cert-card">
-                    <div className="cert-topline">
-                      <span className="cert-mark">✹</span>
-                      <span className="cert-chip">Python</span>
-                    </div>
-                    <h6>Python for Everyone</h6>
-                    <p>Coursera • 2020</p>
-                  </article>
-                </div>
-              </article>
+                  <h5 className="experience-subtitle">Certifications</h5>
+                  <div className="cert-grid">
+                    <article className="cert-card">
+                      <div className="cert-topline">
+                        <span className="cert-mark">✹</span>
+                        <span className="cert-chip">AWS-CCP</span>
+                      </div>
+                      <h6>AWS Certified Cloud Practitioner</h6>
+                      <p>AWS • 2026</p>
+                    </article>
 
-              <article className="experience-entry experience-entry--education">
-                <div className="experience-timeline-dot experience-timeline-dot--bottom"></div>
-                <div className="experience-head">
-                  <h3>🎓 Master of Engineering in Electrical and Computer Engineering</h3>
-                  <span className="experience-badge">2023-2025</span>
-                </div>
+                    <article className="cert-card">
+                      <div className="cert-topline">
+                        <span className="cert-mark">✹</span>
+                        <span className="cert-chip">AZ-900</span>
+                      </div>
+                      <h6>Microsoft Azure Fundamentals</h6>
+                      <p>Azure • 2026</p>
+                    </article>
 
-                <h4>University of Calgary, Canada</h4>
-                <p>
-                  Specialized in software development, algorithms, and system design.
-                </p>
-              </article>
+                    <article className="cert-card">
+                      <div className="cert-topline">
+                        <span className="cert-mark">✹</span>
+                        <span className="cert-chip">Python</span>
+                      </div>
+                      <h6>Python for Everyone</h6>
+                      <p>Coursera • 2020</p>
+                    </article>
+                  </div>
+                </article>
+              ) : (
+                <article className="experience-entry experience-entry--education">
+                  <div className="experience-timeline-dot experience-timeline-dot--top"></div>
+                  <div className="experience-head">
+                    <h3>🎓 Master of Engineering in Electrical and Computer Engineering</h3>
+                    <span className="experience-badge">2023 - 2025</span>
+                  </div>
+
+                  <h4>University of Calgary, Canada</h4>
+                  <p>
+                    Specialized in software development, algorithms, and system design.
+                    Use this tab to add coursework, thesis work, academic awards, or any
+                    other education milestones you want to highlight.
+                  </p>
+
+                  <h5 className="experience-subtitle">Boilerplate</h5>
+                  <div className="education-boilerplate-grid">
+                    <article className="education-boilerplate-card">
+                      <h6>Degree / Program</h6>
+                      <p>Add your next degree, diploma, or certification here.</p>
+                    </article>
+
+                    <article className="education-boilerplate-card">
+                      <h6>Institution</h6>
+                      <p>University, college, bootcamp, or training provider.</p>
+                    </article>
+
+                    <article className="education-boilerplate-card">
+                      <h6>Highlights</h6>
+                      <p>Coursework, thesis, GPA, awards, clubs, or projects.</p>
+                    </article>
+                  </div>
+                </article>
+              )}
             </div>
           </div>
         </section>

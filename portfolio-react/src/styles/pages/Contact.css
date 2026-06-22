@@ -67,10 +67,34 @@
   box-shadow: 0 0 0 3px rgba(232, 90, 113, 0.12);
 }
 
+.contact-status {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.contact-status--success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+}
+
+.contact-status--error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+}
+
 .contact-submit {
   width: fit-content;
   height: 2.7rem;
   margin-right: 0;
+}
+
+.contact-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media (max-width: 768px) {
