@@ -77,55 +77,10 @@ export function About() {
 
               <div className="resume-block">
                 <span className="resume-label">View my resume</span>
-                <a className="button button--primary" href="#">
+                <a className="button button--primary" href="/resume.pdf" download>
                   Resume 📄
                 </a>
               </div>
-
-              <section className="stack-section" aria-label="Stack and tools">
-                <h2>Stack &amp; Tools</h2>
-                <div className="stack-grid">
-                  <span className="tech-badge tech-badge--html" title="HTML">
-                    5
-                  </span>
-                  <span className="tech-badge tech-badge--css" title="CSS">
-                    3
-                  </span>
-                  <span className="tech-badge tech-badge--bootstrap" title="Bootstrap">
-                    B
-                  </span>
-                  <span className="tech-badge tech-badge--tailwind" title="Tailwind">
-                    ≋
-                  </span>
-                  <span className="tech-badge tech-badge--vscode" title="VS Code">
-                    ⌘
-                  </span>
-                  <span className="tech-badge tech-badge--github" title="GitHub">
-                    ⌂
-                  </span>
-                  <span className="tech-badge tech-badge--python" title="Python">
-                    Py
-                  </span>
-                  <span className="tech-badge tech-badge--python" title="PHP">
-                    PHP
-                  </span>
-                  <span className="tech-badge tech-badge--cplus" title="C++">
-                    C++
-                  </span>
-                  <span className="tech-badge tech-badge--react" title="React">
-                    ⚛
-                  </span>
-                  <span className="tech-badge tech-badge--notion" title="Notion">
-                    N
-                  </span>
-                  <span className="tech-badge tech-badge--jira" title="Jira">
-                    J
-                  </span>
-                  <span className="tech-badge tech-badge--triangle" title="Design">
-                    ▲
-                  </span>
-                </div>
-              </section>
             </article>
           </div>
         </section>
@@ -133,8 +88,8 @@ export function About() {
         <section className="experience-section section" aria-labelledby="experience-title">
           <div className="container experience-layout">
             <aside className="experience-intro">
-              <h2 id="experience-title">Experience</h2>
-              <p>Companies I&apos;ve had worked with</p>
+              <h2 id="experience-title"></h2>
+              <p>Experience and Education</p>
 
               <div className="experience-tabs" role="tablist" aria-label="Experience tabs">
                 <button
@@ -144,7 +99,7 @@ export function About() {
                   role="tab"
                   aria-selected={activeExperienceTab === 'work'}
                 >
-                  Work
+                  Experience
                 </button>
                 <button
                   type="button"
@@ -190,69 +145,55 @@ export function About() {
                     Built backend services and business features for an agricultural e-commerce platform with more than 10,000 active users. Integrated payment gateways, optimized database operations, and supported production deployments and troubleshooting.
                   </p>
 
-                  <h5 className="experience-subtitle">Certifications</h5>
-                  <div className="cert-grid">
-                    <article className="cert-card">
-                      <div className="cert-topline">
-                        <span className="cert-mark">✹</span>
-                        <span className="cert-chip">AWS-CCP</span>
-                      </div>
-                      <h6>AWS Certified Cloud Practitioner</h6>
-                      <p>AWS • 2026</p>
-                    </article>
-
-                    <article className="cert-card">
-                      <div className="cert-topline">
-                        <span className="cert-mark">✹</span>
-                        <span className="cert-chip">AZ-900</span>
-                      </div>
-                      <h6>Microsoft Azure Fundamentals</h6>
-                      <p>Azure • 2026</p>
-                    </article>
-
-                    <article className="cert-card">
-                      <div className="cert-topline">
-                        <span className="cert-mark">✹</span>
-                        <span className="cert-chip">Python</span>
-                      </div>
-                      <h6>Python for Everyone</h6>
-                      <p>Coursera • 2020</p>
-                    </article>
-                  </div>
+                  
                 </article>
               ) : (
                 <article className="experience-entry experience-entry--education">
-                  <div className="experience-timeline-dot experience-timeline-dot--top"></div>
-                  <div className="experience-head">
-                    <h3>🎓 Master of Engineering in Electrical and Computer Engineering</h3>
-                    <span className="experience-badge">2023 - 2025</span>
-                  </div>
+                <div className="experience-timeline-dot experience-timeline-dot--top"></div>
 
-                  <h4>University of Calgary, Canada</h4>
-                  <p>
-                    Specialized in software development, algorithms, and system design.
-                    Use this tab to add coursework, thesis work, academic awards, or any
-                    other education milestones you want to highlight.
-                  </p>
+                <div className="experience-head">
+                  <h3>🎓 Master of Engineering in Electrical and Computer Engineering</h3>
+                  <span className="experience-badge">2023 - 2025</span>
+                </div>
 
-                  <h5 className="experience-subtitle">Boilerplate</h5>
-                  <div className="education-boilerplate-grid">
-                    <article className="education-boilerplate-card">
-                      <h6>Degree / Program</h6>
-                      <p>Add your next degree, diploma, or certification here.</p>
-                    </article>
+                <h4>University of Calgary, Canada</h4>
 
-                    <article className="education-boilerplate-card">
-                      <h6>Institution</h6>
-                      <p>University, college, bootcamp, or training provider.</p>
-                    </article>
+                <p>
+                  Advanced studies in software engineering, optimization, embedded systems,
+                  and machine learning with a focus on developing scalable and data-driven
+                  solutions for real-world engineering challenges.
+                </p>
 
-                    <article className="education-boilerplate-card">
-                      <h6>Highlights</h6>
-                      <p>Coursework, thesis, GPA, awards, clubs, or projects.</p>
-                    </article>
-                  </div>
-                </article>
+                <h5 className="experience-subtitle">Academic Highlights</h5>
+
+                <div className="education-boilerplate-grid">
+                  <article className="education-boilerplate-card">
+                    <h6>Coursework</h6>
+                    <p>
+                      Applied Optimization for Sustainable Design,
+                      Machine Learning,
+                      Embedded Systems.
+                    </p>
+                  </article>
+
+                  <article className="education-boilerplate-card">
+                    <h6>Projects</h6>
+                    <p>
+                      Churn Prediction using Machine Learning techniques and
+                      Security-Constrained Economic Dispatch (SCED) Forecasting
+                      for power system optimization and decision support.
+                    </p>
+                  </article>
+
+                  <article className="education-boilerplate-card">
+                    <h6>Technical Focus</h6>
+                    <p>
+                      Machine Learning, Predictive Analytics, Optimization,
+                      Python Development, Cloud Computing, and Distributed Systems.
+                    </p>
+                  </article>
+                </div>
+              </article>
               )}
             </div>
           </div>

@@ -1,139 +1,161 @@
-import * as THREE from 'three';
-(() => {
-  const container = document.getElementById('laptop-scene');
-  if (!container || typeof THREE === 'undefined') return;
+import * as THREE from 'three'
 
-  container.innerHTML = '<div id="laptop-fx" class="laptop-stage__fx"></div>';
+export function initLaptopScene() {
+  const container = document.getElementById('laptop-scene')
+  if (!container || typeof THREE === 'undefined') return () => {}
 
-  const fxHost = document.getElementById('laptop-fx');
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xffffff);
+  container.innerHTML = '<div id="laptop-fx" class="laptop-stage__fx"></div>'
 
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 10);
-  camera.position.set(0, 0, 6.2);
+  const fxHost = document.getElementById('laptop-fx')
+  if (!fxHost) return () => {}
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0xffffff, 0);
-  fxHost.appendChild(renderer.domElement);
+  const scene = new THREE.Scene()
+  scene.background = new THREE.Color(0xffffff)
 
-  const group = new THREE.Group();
-  scene.add(group);
+  const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 20)
+  camera.position.set(0, 0, 8.8)
 
-  const ambient = new THREE.AmbientLight(0xffffff, 1.25);
-  scene.add(ambient);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setClearColor(0xffffff, 0)
+  fxHost.appendChild(renderer.domElement)
 
-  const fill = new THREE.DirectionalLight(0xe85a71, 0.55);
-  fill.position.set(2, 3, 4);
-  scene.add(fill);
+  const stage = new THREE.Group()
+  scene.add(stage)
 
-  const rim = new THREE.DirectionalLight(0x7c3aed, 0.45);
-  rim.position.set(-2, 2, 4);
-  scene.add(rim);
+  const backdrop = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 7),
+    new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.92,
+      depthWrite: false,
+    })
+  )
+  backdrop.position.z = -2.3
+  stage.add(backdrop)
 
-  const loader = new THREE.TextureLoader();
-  const texture = loader.load('/laptop.png', () => {
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-  texture.minFilter = THREE.LinearFilter;
-  texture.magFilter = THREE.LinearFilter;
-});
+  const shadow = new THREE.Mesh(
+    new THREE.CircleGeometry(1.9, 64),
+    new THREE.MeshBasicMaterial({
+      color: 0x111827,
+      transparent: true,
+      opacity: 0.07,
+      depthWrite: false,
+    })
+  )
+  shadow.scale.set(1.65, 0.52, 1)
+  shadow.position.set(0, -1.38, -1.1)
+  stage.add(shadow)
+
+  const ambient = new THREE.AmbientLight(0xffffff, 1.25)
+  scene.add(ambient)
+
+  const fill = new THREE.DirectionalLight(0xe85a71, 0.35)
+  fill.position.set(2.5, 2.5, 5)
+  scene.add(fill)
+
+  const rim = new THREE.DirectionalLight(0x7c3aed, 0.28)
+  rim.position.set(-2, 1.2, 4.5)
+  scene.add(rim)
+
+  const topLight = new THREE.DirectionalLight(0xffffff, 0.5)
+  topLight.position.set(0, 4, 3)
+  scene.add(topLight)
+
+  const loader = new THREE.TextureLoader()
+  const texture = loader.load('/developer.png', () => {
+    texture.colorSpace = THREE.SRGBColorSpace
+    texture.anisotropy = renderer.capabilities.getMaxAnisotropy()
+    texture.minFilter = THREE.LinearFilter
+    texture.magFilter = THREE.LinearFilter
+  })
+
+  const frame = new THREE.Mesh(
+    new THREE.PlaneGeometry(5.55, 4.12),
+    new THREE.MeshBasicMaterial({
+      color: 0xf8fafc,
+      transparent: true,
+      opacity: 0.95,
+      depthWrite: false,
+    })
+  )
+  stage.add(frame)
 
   const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(5.2, 3.86),
     new THREE.MeshBasicMaterial({ map: texture, transparent: true })
-  );
-  group.add(plane);
+  )
+  plane.position.z = 0.02
+  stage.add(plane)
 
-  const glowMaterial = new THREE.MeshBasicMaterial({
-    color: 0x7c3aed,
-    transparent: true,
-    opacity: 0.12,
-    depthWrite: false,
-  });
-
-  const glowOrb = new THREE.Mesh(new THREE.SphereGeometry(0.7, 24, 24), glowMaterial);
-  glowOrb.position.set(-1.55, 0.75, -0.8);
-  group.add(glowOrb);
-
-  const glowOrb2 = new THREE.Mesh(
-    new THREE.SphereGeometry(0.45, 24, 24),
-    new THREE.MeshBasicMaterial({
-      color: 0xe85a71,
-      transparent: true,
-      opacity: 0.1,
-      depthWrite: false,
-    })
-  );
-  glowOrb2.position.set(1.35, -0.65, -0.6);
-  group.add(glowOrb2);
-
-  const ring = new THREE.Mesh(
-    new THREE.TorusGeometry(2.15, 0.03, 10, 90),
-    new THREE.MeshBasicMaterial({
-      color: 0xc084fc,
-      transparent: true,
-      opacity: 0.18,
-      depthWrite: false,
-    })
-  );
-  ring.position.set(0, -0.55, -0.9);
-  group.add(ring);
-
-  const ring2 = new THREE.Mesh(
-    new THREE.TorusGeometry(1.45, 0.02, 10, 90),
-    new THREE.MeshBasicMaterial({
-      color: 0xe85a71,
-      transparent: true,
-      opacity: 0.12,
-      depthWrite: false,
-    })
-  );
-  ring2.position.set(0.55, 0.45, -0.7);
-  ring2.rotation.x = Math.PI / 2;
-  group.add(ring2);
-
-  const overlay = new THREE.Mesh(
-    new THREE.PlaneGeometry(5.2, 3.86),
+  const highlight = new THREE.Mesh(
+    new THREE.PlaneGeometry(5.05, 3.65),
     new THREE.MeshBasicMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.02,
+      opacity: 0.06,
+      depthWrite: false,
     })
-  );
-  overlay.position.z = 0.001;
-  group.add(overlay);
+  )
+  highlight.position.set(-0.03, 0.16, 0.03)
+  stage.add(highlight)
+
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(2.35, 0.02, 10, 100),
+    new THREE.MeshBasicMaterial({
+      color: 0xe85a71,
+      transparent: true,
+      opacity: 0.08,
+      depthWrite: false,
+    })
+  )
+  ring.position.set(0, -0.2, -1.05)
+  ring.rotation.x = Math.PI / 2
+  stage.add(ring)
+
+  const ring2 = new THREE.Mesh(
+    new THREE.TorusGeometry(1.6, 0.018, 10, 100),
+    new THREE.MeshBasicMaterial({
+      color: 0x7c3aed,
+      transparent: true,
+      opacity: 0.07,
+      depthWrite: false,
+    })
+  )
+  ring2.position.set(0.85, 0.62, -0.85)
+  ring2.rotation.x = Math.PI / 2
+  stage.add(ring2)
 
   function resize() {
-    const rect = fxHost.getBoundingClientRect();
-    const width = Math.max(rect.width, 320);
-    const height = Math.max(rect.height, 320);
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    const rect = fxHost.getBoundingClientRect()
+    const width = Math.max(rect.width, 320)
+    const height = Math.max(rect.height, 320)
+    renderer.setSize(width, height, false)
+    camera.aspect = width / height
+    camera.updateProjectionMatrix()
   }
 
-  window.addEventListener('resize', resize);
-  resize();
+  window.addEventListener('resize', resize)
+  resize()
 
-  const clock = new THREE.Clock();
+  const clock = new THREE.Clock()
+  let frameId = 0
+
   function animate() {
-    const t = clock.getElapsedTime();
+    const t = clock.getElapsedTime()
+    camera.position.z = 8.8 + Math.sin(t * 0.35) * 0.22
 
-    group.rotation.z = Math.sin(t * 0.35) * 0.035;
-    group.rotation.y = Math.sin(t * 0.28) * 0.08;
-    group.rotation.x = Math.sin(t * 0.22) * 0.03;
-    group.position.y = Math.sin(t * 0.65) * 0.06;
-    group.scale.setScalar(1 + Math.sin(t * 0.35) * 0.008);
-    glowOrb.position.y = 0.75 + Math.sin(t * 0.9) * 0.08;
-    glowOrb.position.x = -1.55 + Math.sin(t * 0.7) * 0.06;
-    glowOrb2.position.y = -0.65 + Math.cos(t * 0.85) * 0.06;
-    ring.rotation.z = t * 0.12;
-    ring2.rotation.z = -t * 0.15;
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
+    renderer.render(scene, camera)
+    frameId = requestAnimationFrame(animate)
   }
 
-  animate();
-})();
+  animate()
+
+  return () => {
+    cancelAnimationFrame(frameId)
+    window.removeEventListener('resize', resize)
+    renderer.dispose()
+    container.innerHTML = ''
+  }
+}

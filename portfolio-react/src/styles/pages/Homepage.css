@@ -108,6 +108,7 @@
 
 .projects {
   position: relative;
+  scroll-margin-top: 6rem;
 }
 
 .section-heading {

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import { Header } from '../components/Header.jsx';
 import '../styles/pages/Homepage.css'
 
@@ -77,12 +78,32 @@ github: 'https://krishibazar.com.bd/',
 }
 
 export function Homepage() {
-    const [toggleState, setToggleState] = useState('projects');
-    useEffect(() => {
-      import("./laptop-scene.js");
-    }, []);
+    const [toggleState, setToggleState] = useState('projects')
+    const location = useLocation()
 
-    const activeTab = projectTabs[toggleState];
+    useEffect(() => {
+      let cleanup = () => {}
+
+      import('./laptop-scene.js').then(({ initLaptopScene }) => {
+        cleanup = initLaptopScene()
+      })
+
+      return () => {
+        cleanup()
+      }
+    }, [])
+
+    useEffect(() => {
+      if (location.hash !== '#projects') return
+
+      const frame = requestAnimationFrame(() => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+      })
+
+      return () => cancelAnimationFrame(frame)
+    }, [location.hash])
+
+    const activeTab = projectTabs[toggleState]
 
     return (
         <>
@@ -99,7 +120,7 @@ export function Homepage() {
             <h1>
               <span className="accent">Hi there!</span>
               <br />
-              I am Muntasir, a full stack developer and cloud and ai
+              I am Muntasir, a full stack developer and Cloud and AI
               enthusiast.
             </h1>
             <h5>Building scalable system and agentic workflows</h5>
@@ -125,7 +146,7 @@ export function Homepage() {
                     aria-selected={toggleState === 'projects'}
                     onClick={() => setToggleState('projects')}
                   >
-                    Projects
+                    Personal
                   </button>
                   <button
                     className={`projects-tab ${toggleState === 'work' ? 'is-active' : ''}`}
@@ -134,7 +155,7 @@ export function Homepage() {
                     aria-selected={toggleState === 'work'}
                     onClick={() => setToggleState('work')}
                   >
-                    Work
+                    Proffessional 
                   </button>
                 </div>
               </div>

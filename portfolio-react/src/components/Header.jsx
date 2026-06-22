@@ -17,7 +17,9 @@ export function Header({
             About
           </Link>
           <Link to="/#projects">Projects</Link>
-          <Link to="/#skills">Skills</Link>
+          <Link to="/achievements" aria-current={activePage === 'achievements' ? 'page' : undefined}>
+            Achievements
+          </Link>
           <Link to="/contact" aria-current={activePage === 'contact' ? 'page' : undefined}>
             Contact
           </Link>
