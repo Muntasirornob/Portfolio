@@ -12,12 +12,15 @@ export function initLaptopScene() {
   const scene = new THREE.Scene()
   scene.background = new THREE.Color(0xffffff)
 
-  const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 20)
-  camera.position.set(0, 0, 8.8)
+  const camera = new THREE.PerspectiveCamera(20, 1, 0.1, 100)
+  camera.position.set(0, 0.15, 6.2)
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setClearColor(0xffffff, 0)
+  renderer.domElement.style.width = '100%'
+  renderer.domElement.style.height = '100%'
+  renderer.domElement.style.display = 'block'
   fxHost.appendChild(renderer.domElement)
 
   const stage = new THREE.Group()
@@ -131,6 +134,10 @@ export function initLaptopScene() {
     const rect = fxHost.getBoundingClientRect()
     const width = Math.max(rect.width, 320)
     const height = Math.max(rect.height, 320)
+    const isMobile = width < 768
+
+    camera.fov = isMobile ? 38 : 30
+    camera.position.z = isMobile ? 7.8 : 6.2
     renderer.setSize(width, height, false)
     camera.aspect = width / height
     camera.updateProjectionMatrix()
@@ -144,7 +151,8 @@ export function initLaptopScene() {
 
   function animate() {
     const t = clock.getElapsedTime()
-    camera.position.z = 8.8 + Math.sin(t * 0.35) * 0.22
+    const targetZ = camera.fov > 30 ? 7.8 : 6.2
+    camera.position.z = targetZ + Math.sin(t * 0.35) * 0.22
 
     renderer.render(scene, camera)
     frameId = requestAnimationFrame(animate)
